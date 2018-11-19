@@ -2,6 +2,9 @@
 
 namespace Mvc\Controllers;
 
+use Mvc\Lib\Frontcontroller;
+
+
 class AbstractController {
     
     protected $_controller;
@@ -27,7 +30,7 @@ class AbstractController {
     protected function _view() {
 
         $view = VIEW_PATH . $this->_controller . '/' . $this->_action . '.v.php';
-        if($this->_action == 'notFoundAction') {
+        if($this->_action == Frontcontroller::NOT_FOUND_ACTION) {
             $view = VIEW_PATH . 'notfound/notfound.v.php';
         }
         if(file_exists($view)) {
