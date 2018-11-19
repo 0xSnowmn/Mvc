@@ -35,6 +35,9 @@ class Frontcontroller {
             $this->_action = $actionName = self::NOT_FOUND_ACTION;
         }
         $controller = new $className();
+        $controller->setController($this->_controller);
+        $controller->setAction($this->_action);
+        $controller->setParams($this->params);
         $controller->$actionName();
 
 
