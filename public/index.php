@@ -19,5 +19,5 @@ $front->dispatch();
 
 
 ?>
-    <h1>Welcome to Mvc World</h1>
+
 
