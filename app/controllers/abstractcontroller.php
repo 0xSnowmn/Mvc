@@ -10,6 +10,7 @@ class AbstractController {
     protected $_controller;
     protected $_action;
     protected $params;
+    protected $date = [];
 
     public function notFoundAction() {
         $this->_view();
@@ -34,6 +35,7 @@ class AbstractController {
             $view = VIEW_PATH . 'notfound/notfound.v.php';
         }
         if(file_exists($view)) {
+            extract($this->date);
             require $view;
         } else {
             require VIEW_PATH . 'notfound/noview.v.php';
