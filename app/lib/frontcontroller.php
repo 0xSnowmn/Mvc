@@ -11,7 +11,10 @@ class Frontcontroller {
     private $_action     = 'default';
     private $params     = [];
 
-    public function __construct() {
+    private $_tpl;
+
+    public function __construct(Template $Template) {
+        $this->_tpl = $Template;
         $this->Url();
     }
     private function Url() {
@@ -38,6 +41,7 @@ class Frontcontroller {
         $controller->setController($this->_controller);
         $controller->setAction($this->_action);
         $controller->setParams($this->params);
+        $controller->setTemplate($this->_tpl);
         $controller->$actionName();
 
 

@@ -1,9 +1,11 @@
 <?php
-
+namespace Mvc\Lib\Config;
 // Directories
-defined('APP_PATH') ? NULL : define('APP_PATH',__DIR__ . '/');
+defined('APP_PATH') ? NULL : define('APP_PATH',__DIR__ . '/../');
 defined('VIEW_PATH') ? NULL : define('VIEW_PATH', APP_PATH . 'views/');
-
+defined('TEMPLATE_PATH') ? NULL : define('TEMPLATE_PATH', APP_PATH . 'tpl/');
+defined('CSS') ? NULL : define('CSS', '/css/');
+defined('JS') ? NULL : define('JS', '/js/');
 // Database Credentials
 defined('DATABASE_HOST_NAME')       ? null : define ('DATABASE_HOST_NAME', 'localhost');
 defined('DATABASE_USER_NAME')       ? null : define ('DATABASE_USER_NAME', 'youssef');

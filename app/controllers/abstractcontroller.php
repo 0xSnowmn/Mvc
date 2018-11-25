@@ -10,7 +10,8 @@ class AbstractController {
     protected $_controller;
     protected $_action;
     protected $params;
-    protected $date = [];
+    protected $data = [];
+    protected $tpl;
 
     public function notFoundAction() {
         $this->_view();
@@ -27,18 +28,23 @@ class AbstractController {
     public function setParams($param) {
         $this->params = $param;
     }
+
+    public function setTemplate($template) {
+        $this->tpl = $template;
+    }
+
+    public function setData($dat) {
+        $this->data = $dat;
+    }
     
     protected function _view() {
 
         $view = VIEW_PATH . $this->_controller . '/' . $this->_action . '.v.php';
-        if($this->_action == Frontcontroller::NOT_FOUND_ACTION) {
-            $view = VIEW_PATH . 'notfound/notfound.v.php';
+        if($this->_action == Frontcontroller::NOT_FOUND_ACTION || !file_exists($view)) {
+            $view = VIEW_PATH . 'notfound/noview.v.php';
         }
-        if(file_exists($view)) {
-            extract($this->date);
-            require $view;
-        } else {
-            require VIEW_PATH . 'notfound/noview.v.php';
-        }
+        $this->tpl->setView($view);
+        $this->tpl->setData($this->data);
+        $this->tpl->render();
     }
 }
