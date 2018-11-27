@@ -4,6 +4,8 @@ namespace Mvc\Lib\Config;
 defined('APP_PATH') ? NULL : define('APP_PATH',__DIR__ . '/../');
 defined('VIEW_PATH') ? NULL : define('VIEW_PATH', APP_PATH . 'views/');
 defined('TEMPLATE_PATH') ? NULL : define('TEMPLATE_PATH', APP_PATH . 'tpl/');
+defined('LANGUAGE_PATH') ? NULL : define('LANGUAGE_PATH', APP_PATH . 'languages/');
+defined('DEFAULT_LANGUAGE') ? NULL : define('DEFAULT_LANGUAGE','en');
 defined('CSS') ? NULL : define('CSS', '/css/');
 defined('JS') ? NULL : define('JS', '/js/');
 // Database Credentials
