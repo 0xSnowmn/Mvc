@@ -11,7 +11,8 @@ class AbstractController {
     protected $_action;
     protected $params;
     protected $data = [];
-    protected $tpl;
+    protected $_tpl;
+    protected $_language;
 
     public function notFoundAction() {
         $this->_view();
@@ -30,7 +31,11 @@ class AbstractController {
     }
 
     public function setTemplate($template) {
-        $this->tpl = $template;
+        $this->_tpl = $template;
+    }
+
+    public function setLanguage($language) {
+        $this->_language = $language;
     }
 
     public function setData($dat) {
@@ -43,8 +48,9 @@ class AbstractController {
         if($this->_action == Frontcontroller::NOT_FOUND_ACTION || !file_exists($view)) {
             $view = VIEW_PATH . 'notfound/noview.v.php';
         }
-        $this->tpl->setView($view);
-        $this->tpl->setData($this->data);
-        $this->tpl->render();
+        $this->data = array_merge($this->data,$this->_language->getDictionary());
+        $this->_tpl->setView($view);
+        $this->_tpl->setData($this->data);
+        $this->_tpl->render();
     }
 }
