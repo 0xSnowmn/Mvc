@@ -20,12 +20,15 @@ class Template {
     }
 
     public function renderTplStart() {
+        extract($this->data);
         require_once TEMPLATE_PATH . 'tpl_start.php';
     }
     public function renderTplBody() {
+        extract($this->data);
         require_once TEMPLATE_PATH . 'b_start.php';
     }
     public function renderTplEnd() {
+        extract($this->data);
         require_once TEMPLATE_PATH . 'tpl_end.php';
     }
 
@@ -35,6 +38,7 @@ class Template {
         } else {
             $parts = $this->tpl_parts['tpl'];
             if(!empty($parts)) {
+                extract($this->data);
                 foreach($parts as $part => $file) {
                     if($part == ':view') {
                         require_once $this->view;
