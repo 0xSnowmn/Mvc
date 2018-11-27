@@ -10,9 +10,14 @@ include APP_PATH . 'lib/template.php';
 
 use Mvc\Lib\Frontcontroller;
 use Mvc\Lib\Template;
-
+use Mvc\Lib\Language;
+session_start();
+if(!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = DEFAULT_LANGUAGE;
+}
 $tpl = new Template($tpl_parts);
-$front = new Frontcontroller($tpl);
+$language = new Language();
+$front = new Frontcontroller($tpl,$language);
 $front->dispatch();
 
 
