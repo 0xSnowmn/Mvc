@@ -10,7 +10,8 @@ class IndexController extends AbstractController {
 
     }
 
-    public function addAction() {
+    public function createAction() {
+        $this->_language->load('index|default');
         $this->_view();
     }
 }
