@@ -1,12 +1,7 @@
 <?php
-$_['text_legend'] = 'User Details';
-$_['text_label_Username'] = 'Username';
-$_['text_label_FirstName'] = 'First Name';
-$_['text_label_LastName'] = 'Last Name';
-$_['text_label_Password'] = 'Password';
-$_['text_label_CPassword'] = 'Confirm Password';
-$_['text_label_Email'] = 'Email';
-$_['text_label_CEmail'] = 'Confirm Email';
-$_['text_label_PhoneNumber'] = 'Phone Number';
-$_['text_user_GroupId'] = 'Users Groups';
-$_['text_label_save'] = 'Save';
+$_['title'] = 'Users Groups';
+$_['text_header'] = 'Users Groups';
+$_['text_new_item'] = 'New User Group';
+$_['text_table_group_name'] = 'Group Name';
+$_['text_table_control'] = 'Control';
+$_['text_table_control_delete_confirm'] = 'Would you like to delete this Users Group?';
