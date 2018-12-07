@@ -17,3 +17,8 @@ defined('DATABASE_PASSWORD')        ? null : define ('DATABASE_PASSWORD', '');
 defined('DATABASE_DB_NAME')         ? null : define ('DATABASE_DB_NAME', 'store');
 defined('DATABASE_PORT_NUMBER')     ? null : define ('DATABASE_PORT_NUMBER', 3306);
 defined('DATABASE_CONN_DRIVER')     ? null : define ('DATABASE_CONN_DRIVER', 1);
+// Messages
+defined('MESSAGE_SUCCESS')      ? null : define ('MESSAGE_SUCCESS', 1);
+defined('MESSAGE_INFO')         ? null : define ('MESSAGE_INFO', 2);
+defined('MESSAGE_WARNING')      ? null : define ('MESSAGE_WARNING', 3);
+defined('MESSAGE_ERROR')        ? null : define ('MESSAGE_ERROR', 4);
