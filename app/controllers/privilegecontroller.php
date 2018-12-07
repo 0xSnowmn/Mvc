@@ -4,6 +4,7 @@ namespace Mvc\Controllers;
 use Mvc\Lib\Helper;
 use Mvc\Lib\InputFilter;
 use Mvc\Models\PrivilegeModel;
+use Mvc\Models\UsersGroupsPrivilegesModel;
 
 
 
@@ -13,16 +14,16 @@ class PrivilegeController extends AbstractController {
     
     public function defaultAction() {
         
-        $this->_language->load('privilege|label');
-        $this->_language->load('privilege|default');
+        $this->language->load('privilege|label');
+        $this->language->load('privilege|default');
         $this->data['privileges'] = PrivilegeModel::getAll();
         $this->_view();
         
     }
     public function createAction() {
         
-        $this->_language->load('privilege|label');
-        $this->_language->load('privilege|create');
+        $this->language->load('privilege|label');
+        $this->language->load('privilege|create');
         
         if(isset($_POST['submit'])) {
             $privilege = new PrivilegeModel();
@@ -46,8 +47,8 @@ class PrivilegeController extends AbstractController {
         $this->data['privilege'] = $privilege;
 
 
-        $this->_language->load('privilege|label');
-        $this->_language->load('privilege|edit');
+        $this->language->load('privilege|label');
+        $this->language->load('privilege|edit');
         
         if(isset($_POST['submit'])) {
             $privilege->PrivilegeTitle = $this->filt_str($_POST['PrivilegeTitle']);
@@ -66,6 +67,14 @@ class PrivilegeController extends AbstractController {
 
         if($privilege == false) {
             $this->Redirect();
+        }
+
+        $groupPrivileges = UsersGroupsPrivilegesModel::getBy(['PrivilegeId' => $privilege->PrivilegeId]);
+
+        if(false !== $groupPrivileges) {
+            foreach($groupPrivileges as $pr) {
+                $pr->delete();
+            }
         }
 
         $this->data['privilege'] = $privilege;
