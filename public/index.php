@@ -7,6 +7,7 @@ use Mvc\Lib\Template;
 use Mvc\Lib\Language;
 use Mvc\Lib\appSession;
 use Mvc\Lib\Registry;
+use Mvc\Lib\Messanger;
 
 
 
@@ -21,10 +22,12 @@ if(!isset($session->lang)) {
     $session->lang = DEFAULT_LANGUAGE;
 }
 $tpl = new Template($tpl_parts);
+$messanger = Messanger::getInstance($session);
 $language = new Language();
 $registry = Registry::getInstance();
 $registry->language = $language;
 $registry->session = $session;
+$registry->messanger = $messanger;
 $front = new Frontcontroller($tpl,$registry);
 $front->dispatch();
 
