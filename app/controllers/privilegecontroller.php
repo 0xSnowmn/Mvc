@@ -30,6 +30,7 @@ class PrivilegeController extends AbstractController {
             $privilege->PrivilegeTitle = $this->filt_str($_POST['PrivilegeTitle']);
             $privilege->Privilege = $this->filt_str($_POST['Privilege']);
             if($privilege->save()) {
+                $this->messenger->add('Saved Successfull');
                 $this->Redirect('/');
             }
         }
@@ -54,6 +55,7 @@ class PrivilegeController extends AbstractController {
             $privilege->PrivilegeTitle = $this->filt_str($_POST['PrivilegeTitle']);
             $privilege->Privilege = $this->filt_str($_POST['Privilege']);
             if($privilege->save()) {
+                $this->messenger->add('Saved Successfull');
                 $this->Redirect('/');
             }
         }

@@ -53,6 +53,7 @@ class AbstractController {
             $view = VIEW_PATH . 'notfound/noview.v.php';
         }
         $this->data = array_merge($this->data,$this->language->getDictionary());
+        $this->_tpl->setRegistry($this->_registry);
         $this->_tpl->setView($view);
         $this->_tpl->setData($this->data);
         $this->_tpl->render();
