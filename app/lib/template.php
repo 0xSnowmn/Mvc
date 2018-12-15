@@ -6,9 +6,15 @@ class Template {
     protected $tpl_parts;
     protected $view;
     protected $data;
+    protected $_registry;
 
     public function __construct(array $parts) {
         $this->tpl_parts = $parts;
+    }
+
+    public function __get($key)
+    {
+        return $this->_registry->$key;
     }
 
     public function setView($v) {
@@ -17,6 +23,10 @@ class Template {
 
     public function setData($dat) {
         $this->data = $dat;
+    }
+
+    public function setRegistry($registry) {
+        $this->_registry = $registry;
     }
 
     public function renderTplStart() {

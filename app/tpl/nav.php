@@ -45,3 +45,6 @@
     </ul>
 </nav>
 <div class="action_view collapsed no_animation">
+<?php $messages = $this->messenger->getMessages();if($messages != ''): foreach($messages as $msg): ?>
+<p class="message t<?= $msg[1] ?>"><?= $msg[0] ?><a href="" class="closeBtn"><i class="fa fa-times"></i></a></p>
+<?php endforeach;endif; ?>
