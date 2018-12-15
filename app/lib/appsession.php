@@ -49,6 +49,9 @@ class appSession extends \SessionHandler {
   public function __isset($key) {
     return isset($_SESSION[$key]) ? true : false;
   }
+  public function __unset($key) {
+    unset($_SESSION[$key]);
+  }
 
 
 
