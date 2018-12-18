@@ -34,13 +34,15 @@
             <label><?= $text_label_PhoneNumber ?></label>
             <input required type="text" name="PhoneNumber" value="">
         </div>
-        <!--close-- >
         <div class="input_wrapper_other padding n20 select">
             <select required name="GroupId">
-                <option value=""></option>
+                <option value=""><?= $text_user_GroupId ?></option>
+                <?php if (false !== $groups): foreach ($groups as $group): ?>
+                    <option value="<?= $group->GroupId ?>"><?= $group->GroupName ?></option>
+                <?php endforeach;endif; ?>
             </select>
         </div>
-        </!-- clodw -->
+
         <input class="no_float" type="submit" name="submit" value="<?= $text_label_save ?>">
     </fieldset>
 </form>

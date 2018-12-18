@@ -6,8 +6,6 @@ use Mvc\Lib\InputFilter;
 use Mvc\Models\PrivilegeModel;
 use Mvc\Models\UsersGroupsPrivilegesModel;
 
-
-
 class PrivilegeController extends AbstractController {
     use InputFilter;
     use Helper;
@@ -78,12 +76,9 @@ class PrivilegeController extends AbstractController {
                 $pr->delete();
             }
         }
-
         $this->data['privilege'] = $privilege;
             if($privilege->delete()) {
                 $this->Redirect('/');
             }
-        
-
     }
 }

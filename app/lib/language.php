@@ -27,6 +27,19 @@ class Language {
 
     }
 
+    public function get($key) {
+        if(array_key_exists($key,$this->_dic)) {
+            return $this->_dic[$key];
+        }
+    }
+
+    public function feedKey($key,$data) {
+        if(array_key_exists($key,$this->_dic)) {
+            array_unshift($data,$this->_dic[$key]);
+            return call_user_func_array('sprintf',$data);
+        }
+    }
+
 
     public function getDictionary() {
         return $this->_dic;
