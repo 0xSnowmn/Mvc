@@ -9,7 +9,8 @@ defined('DEFAULT_LANGUAGE') ? NULL :        define('DEFAULT_LANGUAGE','en');
 defined('CSS') ? NULL :                     define('CSS', '/css/');
 defined('JS') ? NULL :                      define('JS', '/js/');
 // Session
-defined('SESSION_SAVE_PATH') ? NULL :        define('SESSION_SAVE_PATH',APP_PATH . '../sessions');
+defined('SESSION_SAVE_PATH')        ? NULL : define('SESSION_SAVE_PATH',APP_PATH . '../sessions');
+defined('SALT')                     ? NULL : define('SALT','$2y$10$PyE0eGxMEwjcFUxFR27ufe2bbfqXYUpT8dvY2do6ZodHu9.7lWiq2');
 // Database Credentials
 defined('DATABASE_HOST_NAME')       ? null : define ('DATABASE_HOST_NAME', 'localhost');
 defined('DATABASE_USER_NAME')       ? null : define ('DATABASE_USER_NAME', 'yghonem');
