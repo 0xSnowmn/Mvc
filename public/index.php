@@ -3,17 +3,17 @@
 namespace Mvc;
 
 use Mvc\Lib\Frontcontroller;
-use Mvc\Lib\Template;
 use Mvc\Lib\Language;
 use Mvc\Lib\appSession;
 use Mvc\Lib\Registry;
 use Mvc\Lib\Messenger;
+use Mvc\Lib\Template\Template;
 
 
 include '../app/config/config.php';
 include APP_PATH . 'lib/autoload.php';
 $tpl_parts = include APP_PATH . 'config/tpl_config.php';
-include APP_PATH . 'lib/template.php';
+include APP_PATH . 'lib/Template/template.php';
 
 $session = new appSession();
 $session->start();

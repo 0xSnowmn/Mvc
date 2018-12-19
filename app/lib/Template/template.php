@@ -1,12 +1,20 @@
 <?php
 
-namespace Mvc\Lib;
+namespace Mvc\Lib\Template;
+
+use Mvc\Lib\TemplateHelper;
+
+
 
 class Template {
+
+    use TemplateHelper;
+
     protected $tpl_parts;
     protected $view;
     protected $data;
     protected $_registry;
+    
 
     public function __construct(array $parts) {
         $this->tpl_parts = $parts;

@@ -14,7 +14,7 @@ class Frontcontroller {
     private $_tpl;
     private $_regisrty;
 
-    public function __construct(Template $Template,Registry $registry) {
+    public function __construct(Template\Template $Template,Registry $registry) {
         $this->_regisrty = $registry;
         $this->_tpl = $Template;
         $this->Url();

@@ -30,4 +30,15 @@ class UserModel extends AbstractModel {
         'Status'            => self::DATA_TYPE_INT,
     );
     protected static $primaryKey = 'UserId';
+
+    public function cryptPass($password) {
+      $password = crypt($password,SALT);
+       return $password;
+    }
+
+    public static function getAll() {
+        return SELF::get(
+            'SELECT au.*,aug.GroupName AS GroupName From ' . self::$tableName . ' au INNER JOIN app_users_groups aug on aug.GroupId = au.GroupId'
+        );
+    }
 }

@@ -71,6 +71,9 @@ trait Validate {
   public function eq($value,$val2) {
     return $value == $val2;
   }
+  public function eq_input($value,$val2) {
+    return $value == $val2;
+  }
   public function email($value) {
     return (bool) preg_match($this->_pattern['email'],$value);
   }
@@ -123,10 +126,17 @@ trait Validate {
                   ,MESSAGE_ERROR);
                   $errors[$input] = true;
               }
-            } elseif(preg_match_all('/(eq)\((\d+),(\d+)\)/',$v_role,$m)) {
-              if(!$this->eq($value,$m[2][0],$m[3][])) {
+            } elseif(preg_match_all('/(eq)\((\w+),(\w+)\)/',$v_role,$m)) {
+              if(!$this->eq($value,$m[2][0],$m[3][0])) {
                 $this->messenger->add(
                   $this->language->feedKey('text_error_' . $m[1][0],[$this->language->get('text_label_' . $input),$m[2][0], $m[3][0]])
+                  ,MESSAGE_ERROR);
+                  $errors[$input] = true;
+              }
+            } elseif(preg_match_all('/(eq_input)\((\w+)/',$v_role,$m)) {
+              if(!$this->eq_input($value,$type[$m[2][0]])) {
+                $this->messenger->add(
+                  $this->language->feedKey('text_error_' . $m[1][0],[$this->language->get('text_label_' . $input),$m[2][0]])
                   ,MESSAGE_ERROR);
                   $errors[$input] = true;
               }
