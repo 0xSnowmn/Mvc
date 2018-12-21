@@ -1,4 +1,9 @@
-
+$('table.data').DataTable(
+    {
+        "aaSorting": [],
+        "stateSave": true
+    }
+);
 
 $('a.menu_switch').click(function(evt)
 {
@@ -91,6 +96,7 @@ $('li.submenu > a').click(function()
                 if(req.readyState == req.DONE && req.status == 200) {
                     if(req.response == 0) {
                         iElem.className = 'fa fa-times error';
+                        iElem.attr('title','User Is Exists');
                     } else if(req.response == 1) {
                         iElem.className = 'fa fa-check success';
                     }

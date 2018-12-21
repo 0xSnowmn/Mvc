@@ -34,39 +34,39 @@ trait Validate {
     return (bool) preg_match($this->_pattern['alphanum'],$value);
   }
   public function lt($value,$num) {
-      if(is_numeric($value)) {
+    if(is_string($value)) {
+      return mb_strlen($value) < $num;
+    } elseif(is_numeric($value)) {
             return $value < $num;
-      } elseif(is_string($value)) {
-          return mb_strlen($value) < $num;
-      }
+      } 
   }
   public function gt($value,$num) {
-    if(is_numeric($value)) {
+    if(is_string($value)) {
+      return mb_strlen($value) > $num;
+   } elseif(is_numeric($value)) {
           return $value > $num;
-    } elseif(is_string($value)) {
-        return mb_strlen($value) > $num;
     }
   }
   public function min($value,$min) {
-    if(is_numeric($value)) {
+    if(is_string($value)) {
+      return mb_strlen($value) >= $min;
+    } elseif(is_numeric($value)) {
           return $value >= $min;
-    } elseif(is_string($value)) {
-        return mb_strlen($value) >= $min;
-    }
+    } 
   }
   public function max($value,$max) {
-    if(is_numeric($value)) {
-          return $value <= $max;
-    } elseif(is_string($value)) {
-        return mb_strlen($value) <= $max;
+    if(is_string($value)) {
+      return mb_strlen($value) <= $max;
+    } elseif(is_numeric($value)) {
+     return $value <= $max;
     }
   }
   public function between($value,$min,$max) {
-    if(is_numeric($value)) {
-          return $value >= $min && $value <= $max;
-    } elseif(is_string($value)) {
+    if(is_string($value)) {
         return mb_strlen($value) >= $min && mb_strlen($value) <= $max;;
-    }
+    } elseif(is_numeric($value)) {
+      return $value >= $min && $value <= $max;
+    } 
   }
   public function eq($value,$val2) {
     return $value == $val2;

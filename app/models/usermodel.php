@@ -36,9 +36,34 @@ class UserModel extends AbstractModel {
        return $password;
     }
 
-    public static function getAll() {
+    public static function getUsers(UserModel $user) {
         return SELF::get(
-            'SELECT au.*,aug.GroupName AS GroupName From ' . self::$tableName . ' au INNER JOIN app_users_groups aug on aug.GroupId = au.GroupId'
+            'SELECT au.*,aug.GroupName AS GroupName From ' . self::$tableName . ' au INNER JOIN app_users_groups aug on aug.GroupId = au.GroupId WHERE au.UserId != ' . $user->UserId
         );
+    }
+
+    public static function UserExists($username) {
+        return self::getBy(['Username' => $username]);
+    }
+    public static function EmailExists($email) {
+        return self::getBy(['Username' => $email]);
+    }
+
+    public static function auth($username,$pass,$session) {
+        $pass = self::cryptPass($pass);
+        //$found = self::getBy(['Username' => $username ,'Password' => $pass]);
+        $sql = 'SELECT *, (SELECT GroupName FROM app_users_groups WHERE app_users_groups.GroupId = ' . self::$tableName . '.GroupId) GroupName From ' . self::$tableName .  ' WHERE Username = "' . $username . '" AND Password = "' .  $pass . '"';
+        $foundUser = self::getOne($sql);
+        if(false !== $foundUser) {
+            if($foundUser->Status == 2) {
+                return 2;
+            }
+            $foundUser->LastLogin = date('Y-m-d H:i:s');
+            $foundUser->save();
+            $foundUser->profile = UsersProfileModel::getByPK($foundUser->UserId);
+            $session->u = $foundUser;
+            return 1;
+        }
+        return false;
     }
 }

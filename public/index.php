@@ -8,6 +8,7 @@ use Mvc\Lib\appSession;
 use Mvc\Lib\Registry;
 use Mvc\Lib\Messenger;
 use Mvc\Lib\Template\Template;
+use Mvc\Lib\Authentication;
 
 
 include '../app/config/config.php';
@@ -22,12 +23,13 @@ if(!isset($session->lang)) {
 }
 $tpl = new Template($tpl_parts);
 $messenger = Messenger::getInstance($session);
+$authentication = Authentication::getInstance($session);
 $language = new Language();
 $registry = Registry::getInstance();
 $registry->language = $language;
 $registry->session = $session;
 $registry->messenger = $messenger;
-$front = new Frontcontroller($tpl,$registry);
+$front = new Frontcontroller($tpl,$registry,$authentication);
 $front->dispatch();
 
 

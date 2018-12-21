@@ -24,8 +24,8 @@ return [
     'F_srcs' => [
         'Jq' => JS . 'vendor/jq.js',
         'helper' => JS . 'helper.js',
+        'datatable' => JS . 'datatablesen.js',
         'main' => JS . 'main.js',
-        'datatable' => JS . 'datatablesen.js'
     ]
 
 ];

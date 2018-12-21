@@ -1,9 +1,9 @@
 <?php
 
 namespace Mvc\Lib;
-
+use Mvc\Lib\Helper;
 class Frontcontroller {
-
+    use Helper;
     const NOT_FOUND_CONTROLLER  = 'Mvc\Controllers\NotfoundController';
     const NOT_FOUND_ACTION      = 'notFoundAction';
 
@@ -12,11 +12,13 @@ class Frontcontroller {
     private $params     = [];
 
     private $_tpl;
+    private $_auth;
     private $_regisrty;
 
-    public function __construct(Template\Template $Template,Registry $registry) {
+    public function __construct(Template\Template $Template,Registry $registry,Authentication $auth) {
         $this->_regisrty = $registry;
         $this->_tpl = $Template;
+        $this->_auth = $auth;
         $this->Url();
     }
     private function Url() {
@@ -35,6 +37,15 @@ class Frontcontroller {
     public function dispatch() {
         $className      = 'Mvc\Controllers\\' . ucfirst($this->_controller) . 'Controller';
         $actionName     = $this->_action . 'Action';
+        if(!$this->_auth->isAuthorized()) {
+            if($this->_controller != 'auth' && $this->_action != 'login') {
+                $this->Redirect('/auth/login');
+            }
+        } else {
+            if($this->_controller == 'auth' && $this->_action == 'login') {
+                isset($_SERVER['HTTP_REFERER']) ? $this->Redirect($_SERVER['HTTP_REFERER']) : $this->Redirect();
+            }
+        }
         if(!class_exists($className) || !method_exists($className,$actionName)) {
             $className  = self::NOT_FOUND_CONTROLLER;
             $this->_action = $actionName = self::NOT_FOUND_ACTION;

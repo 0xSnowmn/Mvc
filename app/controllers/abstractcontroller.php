@@ -3,7 +3,7 @@
 namespace Mvc\Controllers;
 
 use Mvc\Lib\Frontcontroller;
-
+use Mvc\Lib\Template;
 
 class AbstractController {
     
@@ -11,6 +11,9 @@ class AbstractController {
     protected $_action;
     protected $params;
     protected $data = [];
+    /**
+     * @var Template\Template
+     */
     protected $_tpl;
     protected $_registry;
 

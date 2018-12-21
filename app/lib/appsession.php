@@ -54,7 +54,16 @@ class appSession extends \SessionHandler {
   }
 
 
-
+  public function kill()
+  {
+      session_unset();
+      setcookie(
+          $this->s_name, '', time() - 1000,
+          $this->s_path, $this->s_domain,
+          $this->s_ssl, $this->s_http
+      );
+      session_destroy();
+  }
 
       public function read($id) {
 

@@ -37,6 +37,10 @@ class Template {
         $this->_registry = $registry;
     }
 
+    public function EditParts($tpl) {
+        $this->tpl_parts['tpl'] = $tpl;
+    }
+
     public function renderTplStart() {
         extract($this->data);
         require_once TEMPLATE_PATH . 'tpl_start.php';

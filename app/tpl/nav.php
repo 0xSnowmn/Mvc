@@ -3,8 +3,8 @@
         <div class="profile_picture">
             <img src="/img/user.png" alt="User Profile Picture">
         </div>
-        <span class="name">Youssef Ahmed</span>
-        <span class="privilege">Manger</span>
+        <span class="name"><?= $this->session->u->profile->FirstName ?></span>
+        <span class="privilege"><?= $this->session->u->GroupName ?></span>
     </div>
     <ul class="app_navigation">
         <li class=""><a href="/"><i class="fa fa-dashboard"></i> general_statistics </a></li>
