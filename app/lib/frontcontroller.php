@@ -45,7 +45,7 @@ class Frontcontroller {
             if($this->_controller == 'auth' && $this->_action == 'login') {
                 isset($_SERVER['HTTP_REFERER']) ? $this->Redirect($_SERVER['HTTP_REFERER']) : $this->Redirect();
             }
-            if((bool)CHECK_ACCESS == true ) {
+            if((bool)CHECK_ACCESS == false ) {
                 if(!$this->_auth->hasAccess($this->_controller,$this->_action)) {
                     $this->Redirect('/accessdenied');
                 }

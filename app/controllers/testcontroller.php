@@ -9,6 +9,6 @@ use Mvc\Models\UserModel;
 class TestController extends AbstractController {
     use Validate;
     public function defaultAction() {
-        var_dump(UserModel::getBy(['Username' => 'yghonem2']));
+        echo MAX_SIZE_UPLOAD;
     }
 }

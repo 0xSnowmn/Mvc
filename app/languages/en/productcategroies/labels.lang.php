@@ -1,0 +1,7 @@
+<?php
+
+$_['text_legend'] = 'بيانات القسم';
+$_['text_label_category_title'] = 'اسم قسم المنتجات';
+$_['text_label_Image'] = 'صورة قسم المنتجات';
+$_['text_label_save'] = 'حفظ';
+$_['text_label_Name'] = 'اسم المنتج';
