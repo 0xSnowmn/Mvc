@@ -23,3 +23,4 @@ defined('MESSAGE_SUCCESS')      ? null : define ('MESSAGE_SUCCESS', 1);
 defined('MESSAGE_INFO')         ? null : define ('MESSAGE_INFO', 2);
 defined('MESSAGE_WARNING')      ? null : define ('MESSAGE_WARNING', 3);
 defined('MESSAGE_ERROR')        ? null : define ('MESSAGE_ERROR', 4);
+defined('CHECK_ACCESS')        ? null : define ('CHECK_ACCESS', 1);
