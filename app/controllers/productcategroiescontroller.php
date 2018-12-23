@@ -6,10 +6,7 @@ use Mvc\Lib\Helper;
 use Mvc\Lib\InputFilter;
 use Mvc\Lib\Messenger;
 use Mvc\Lib\Validate;
-use Mvc\Models\PrivilegeModel;
 use Mvc\Models\ProductCategoryModel;
-use Mvc\Models\UserGroupModel;
-use Mvc\Models\UserGroupPrivilegeModel;
 
 class ProductCategroiesController extends AbstractController
 {
@@ -99,7 +96,7 @@ class ProductCategroiesController extends AbstractController
     }
     public function deleteAction()
     {
-        $id = $this->filt_int($this->_params[0]);
+        $id = $this->filt_int($this->params[0]);
         $category = ProductCategoryModel::getByPK($id);
         if ($category === false) {
             $this->Redirect('/productcategroies');
@@ -107,8 +104,8 @@ class ProductCategroiesController extends AbstractController
         $this->language->load('productcategroies|messages');
         if ($category->delete()) {
             // Remove the old image
-            if ($category->Image !== '' && file_exists(IMAGES_UPLOAD_STORAGE | DS | $category->Image)) {
-                unlink(IMAGES_UPLOAD_STORAGE | DS | $category->Image);
+            if ($category->Image !== '' && file_exists(IMAGE_FOLDER . $category->Image)) {
+                unlink(IMAGE_FOLDER . $category->Image);
             }
             $this->messenger->add($this->language->get('message_delete_success'));
         } else {

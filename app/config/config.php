@@ -24,7 +24,7 @@ defined('MESSAGE_INFO')         ? null : define ('MESSAGE_INFO', 2);
 defined('MESSAGE_WARNING')      ? null : define ('MESSAGE_WARNING', 3);
 defined('MESSAGE_ERROR')        ? null : define ('MESSAGE_ERROR', 4);
 defined('CHECK_ACCESS')        ? null : define ('CHECK_ACCESS', 1);
-defined('UPLOADE_FOLDER')      ? null : define ('UPLOADE_FOLDER', APP_PATH . '../uploads/');
+defined('UPLOADE_FOLDER')      ? null : define ('UPLOADE_FOLDER', APP_PATH . '../public/uploads/');
 defined('IMAGE_FOLDER')        ? null : define ('IMAGE_FOLDER', UPLOADE_FOLDER . 'images/');
 defined('DOCUMENT_FOLDER')        ? null : define ('DOCUMENT_FOLDER', APP_PATH . 'documents/');
 defined('MAX_SIZE_UPLOAD')        ? null : define ('MAX_SIZE_UPLOAD', ini_get('upload_max_filesize'));

@@ -8,9 +8,9 @@ class FileUpload {
     private $error;
     private $File_ex;
     private $tmp_name;
-    private $maxSize = 104;
+    private $maxSize = 10485760;
     private $ex_allowed = [
-        'jpg', 'png', 'gif'
+        'jpg' , 'jpeg' , 'png', 'gif'
     ];
 
     public function __construct(array $file) {
@@ -50,12 +50,7 @@ class FileUpload {
     }
 
     private function isAllowSize() {
-        preg_match_all('/(\d+)([MG])$/i', MAX_SIZE_UPLOAD, $m);
-        $maxFileSizeToUpload = $m[1][0];
-        $sizeUnit = $m[2][0];
-        $currentFileSize = ($sizeUnit == 'M') ? ($this->size / 1024 / 1024) : ($this->size / 1024 / 1024 / 1024);
-        $currentFileSize = ceil($currentFileSize);
-        return (int) $currentFileSize > (int) $this->maxSize;
+        return (int) $this->size > (int) $this->maxSize;
     }
 
     public function upload() {

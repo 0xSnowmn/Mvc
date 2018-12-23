@@ -2,7 +2,7 @@
     <fieldset>
         <legend><?= $text_legend ?></legend>
         <div class="input_wrapper n100">
-            <label<?= $this->labelFloat('Name') ?>><?= $text_label_Name ?></label>
+            <label><?= $this->labelFloat('Name') ?><?= $text_label_Name ?></label>
             <input required type="text" name="Name" id="Name" maxlength="20" value="<?= $this->showValue('Name') ?>">
         </div>
         <div class="input_wrapper n100">
